@@ -10,36 +10,36 @@ const Rightbar = () => {
           <Image className={styles.bg} src="/astronaut.png" alt="" fill />
         </div>
         <div className={styles.text}>
-          <span className={styles.notification}>🔥 Available Now</span>
+          <span className={styles.notification}>🔥 Avalie Agora</span>
           <h3 className={styles.title}>
-            How to use the new version of the admin dashboard?
+            Quer aprender a usar a nova versão do admin dashboard?
           </h3>
-          <span className={styles.subtitle}>Takes 4 minutes to learn</span>
+          <span className={styles.subtitle}>Levará apenas 4 minutos</span>
           <p className={styles.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit eius libero perspiciatis recusandae possimus.
           </p>
           <button className={styles.button}>
             <MdPlayCircleFilled />
-            Watch
+            Assistir
           </button>
         </div>
       </div>
       <div className={styles.item}>
         <div className={styles.text}>
-          <span className={styles.notification}>🚀 Coming Soon</span>
+          <span className={styles.notification}>🚀 Em breve</span>
           <h3 className={styles.title}>
-            New server actions are available, partial pre-rendering is coming
-            up!
+            Novas ações de servidor estarão disponíveis, a pré-renderização
+            parcial está chegando!
           </h3>
-          <span className={styles.subtitle}>Boost your productivity</span>
+          <span className={styles.subtitle}>Melhore a sua produtividade</span>
           <p className={styles.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit eius libero perspiciatis recusandae possimus.
           </p>
           <button className={styles.button}>
             <MdReadMore />
-            Learn
+            Ler +
           </button>
         </div>
       </div>
