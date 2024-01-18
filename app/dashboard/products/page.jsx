@@ -4,7 +4,6 @@ import styles from "@/app/ui/dashboard/products/products.module.css";
 import Search from "@/app/ui/dashboard/search/search";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 
-
 const ProductsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
@@ -16,7 +15,7 @@ const ProductsPage = async ({ searchParams }) => {
       createdAt: new Date(),
       stock: 12,
       img: "/noproduct.jpg",
-      id: 1
+      id: 1,
     },
     {
       title: "Product 2",
@@ -25,7 +24,7 @@ const ProductsPage = async ({ searchParams }) => {
       createdAt: new Date(),
       stock: 12,
       img: "/noproduct.jpg",
-      id: 2
+      id: 2,
     },
     {
       title: "Product 3",
@@ -34,7 +33,7 @@ const ProductsPage = async ({ searchParams }) => {
       createdAt: new Date(),
       stock: 12,
       img: "/noproduct.jpg",
-      id: 3
+      id: 3,
     },
     {
       title: "Product 4",
@@ -43,9 +42,9 @@ const ProductsPage = async ({ searchParams }) => {
       createdAt: new Date(),
       stock: 12,
       img: "/noproduct.jpg",
-      id: 4
+      id: 4,
     },
-  ]
+  ];
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -86,7 +85,7 @@ const ProductsPage = async ({ searchParams }) => {
               <td>{product.stock}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/products/${product.id}`}>
+                  <Link href={`/dashboard/products/test`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>

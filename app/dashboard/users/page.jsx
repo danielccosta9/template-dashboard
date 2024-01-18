@@ -43,16 +43,18 @@ const UsersPages = () => {
             <td>Admin</td>
             <td>Active</td>
             <td>
-              <Link href="/">
-                <button className={`${styles.button} ${styles.view}`}>
-                  Edit
-                </button>
-              </Link>
-              <Link href="/">
-                <button className={`${styles.button} ${styles.delete}`}>
-                  Delete
-                </button>
-              </Link>
+              <div className={styles.buttons}>
+                <Link href="/dashboard/users/test">
+                  <button className={`${styles.button} ${styles.view}`}>
+                    View
+                  </button>
+                </Link>
+                <Link href="/">
+                  <button className={`${styles.button} ${styles.delete}`}>
+                    Delete
+                  </button>
+                </Link>
+              </div>
             </td>
           </tr>
         </tbody>
