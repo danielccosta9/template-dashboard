@@ -8,6 +8,7 @@ import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 
 import {
+  Button,
   Box,
   styled,
   Table,
@@ -19,6 +20,10 @@ import {
   Input,
   IconButton,
   LinearProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
 } from "@mui/material";
 import { connectApiToPaciente } from "../conect";
 
@@ -38,6 +43,7 @@ const PaginationTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [paciente, setPaciente] = useState([]);
   const [busca, setBusca] = useState("");
+  const [open, setOpen] = useState(false);
 
   const apiUrl = connectApiToPaciente();
 
@@ -49,16 +55,28 @@ const PaginationTable = () => {
     });
   }, [setIsLoading, setPaciente, apiUrl]);
 
-  const handleDelete = (id) => {
-    setIsLoading(true);
-    window.confirm("Deseja realmente excluir este paciente?");
-    if (window.confirm) {
-      Axios.delete(`${apiUrl}/${id}`).then(() => {
-        setPaciente(paciente.filter((paciente) => paciente.paciente_id !== id));
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseToDelete = (id) => {
+    setOpen(false);
+    Axios.delete(`https://api-paciente.cyclic.app/paciente/${id}`)
+      .then(() => {
+        const filtered = paciente.filter(
+          (paciente) => paciente.paciente_id !== id
+        );
+        setPaciente(filtered);
         setIsLoading(false);
         toast.success("Paciente excluído com sucesso!");
+      })
+      .catch(() => {
+        toast.error("Erro ao excluir paciente!");
       });
-    }
   };
 
   const quantidadePaciente = paciente;
@@ -158,12 +176,10 @@ const PaginationTable = () => {
               </TableRow>
             </TableHead>
             <TableBody
-            hover
-            sx={
-              {
-               p: "10px",
-              }
-            }
+              hover
+              sx={{
+                p: "10px",
+              }}
             >
               {filteredPaciente
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -180,21 +196,52 @@ const PaginationTable = () => {
                       {paciente.paciente_telefone}
                     </TableCell>
                     <TableCell align="center">
-                      <Link href={`/dashboard/pacientes/${paciente.paciente_id}`}>
+                      <Link
+                        href={`/dashboard/pacientes/${paciente.paciente_id}`}
+                      >
                         <IconButton>
                           <EditIcon color="primary" />
                         </IconButton>
                       </Link>
-                      <Link href={`/dashboard/pacientes/${paciente.paciente_id}`}>
+                      <Link
+                        href={`/dashboard/pacientes/${paciente.paciente_id}`}
+                      >
                         <IconButton>
                           <EditCalendarIcon color="warning" />
                         </IconButton>
                       </Link>
                       <IconButton
-                        onClick={handleDelete.bind(this, paciente.paciente_id)}
+                        onClick={handleClickOpen.bind(
+                          this,
+                          paciente.paciente_id
+                        )}
                       >
                         <DeleteSweepIcon color="error" />
                       </IconButton>
+                      <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                      >
+                        <DialogTitle id="alert-dialog-title">
+                          {`Deseja realmente excluir este paciente: ${paciente.paciente_nome}?`}
+                        </DialogTitle>
+                        <DialogContent></DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleClose}>NÃO</Button>
+                          <Button
+                            onClick={handleCloseToDelete.bind(
+                              this,
+                              paciente.paciente_id
+                            )}
+                            autoFocus
+                            color="error"
+                          >
+                            SIM
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
                     </TableCell>
                   </TableRow>
                 ))}
