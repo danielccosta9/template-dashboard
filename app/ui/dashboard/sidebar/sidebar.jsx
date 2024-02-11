@@ -4,11 +4,8 @@ import styles from "./sidebar.module.css";
 
 import {
   MdDashboard,
-  MdSupervisedUserCircle,
   MdShoppingBag,
   MdAttachMoney,
-  MdWork,
-  MdAnalytics,
   MdPeople,
   MdOutlineSettings,
   MdHelpCenter,
@@ -25,9 +22,9 @@ const menuItems = [
         icon: <MdDashboard />,
       },
       {
-        title: "Users",
-        path: "/dashboard/users",
-        icon: <MdSupervisedUserCircle />,
+        title: "Pacientes",
+        path: "/dashboard/pacientes",
+        icon: <MdPeople />,
       },
       {
         title: "Products",
@@ -38,26 +35,6 @@ const menuItems = [
         title: "Transactions",
         path: "/dashboard/transactions",
         icon: <MdAttachMoney />,
-      },
-    ],
-  },
-  {
-    title: "Analytics",
-    list: [
-      {
-        title: "Revenue",
-        path: "/dashboard/revenue",
-        icon: <MdWork />,
-      },
-      {
-        title: "Reports",
-        path: "/dashboard/reports",
-        icon: <MdAnalytics />,
-      },
-      {
-        title: "Teams",
-        path: "/dashboard/teams",
-        icon: <MdPeople />,
       },
     ],
   },
