@@ -65,7 +65,7 @@ const PaginationTable = () => {
 
   const handleCloseToDelete = (id) => {
     setOpen(false);
-    Axios.delete(`https://api-paciente.cyclic.app/paciente/${id}`)
+    Axios.delete(`${apiUrl}/${id}`)
       .then(() => {
         const filtered = paciente.filter(
           (paciente) => paciente.paciente_id !== id
