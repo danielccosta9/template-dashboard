@@ -1,4 +1,4 @@
-const apiUrl = "https://api-paciente.cyclic.app";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export function connectApiToPaciente() {
   return `${apiUrl}/paciente`;
